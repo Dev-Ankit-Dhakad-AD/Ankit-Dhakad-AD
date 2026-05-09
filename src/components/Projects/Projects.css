@@ -1,0 +1,373 @@
+/* ==========================================================================
+   3D CAROUSEL GLASS HUD STYLES
+   ========================================================================== */
+
+.projects-3d-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 700px;
+  margin: 0 auto;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+}
+
+/* De-register old cybernetic corners */
+.hud-corners {
+  display: none !important;
+}
+
+/* Top Information Header */
+.hud-header-bar {
+  position: absolute;
+  top: 20px;
+  left: 28px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-prompt {
+  color: var(--accent-secondary);
+}
+
+/* 3D Viewport container */
+.projects-canvas-container {
+  width: 100%;
+  height: 610px;
+  position: relative;
+  overflow: hidden;
+  pointer-events: none; /* Let clicks pass through container frame */
+}
+
+.projects-three-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: auto; /* Allow canvas dragging and interaction */
+}
+
+/* HUD Navigation Overlays */
+.hud-navigation-controls {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  z-index: 9999; /* Ensure buttons are at the absolute top layer */
+  pointer-events: auto; /* Guarantee responsiveness on click events */
+}
+
+.hud-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  padding: 10px 22px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+  border-radius: 99px;
+  box-shadow: none;
+}
+
+.hud-btn:hover {
+  background: rgba(168, 85, 247, 0.05);
+  border-color: rgba(168, 85, 247, 0.3);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.15);
+  transform: scale(1.02);
+}
+
+.hud-btn:active {
+  transform: scale(0.97);
+}
+
+.hud-btn .glow-icon {
+  display: flex;
+  align-items: center;
+}
+
+.hud-indicators {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 120px;
+}
+
+.index-counter {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.index-counter .divider {
+  color: rgba(255, 255, 255, 0.2);
+  margin: 0 6px;
+}
+
+.indicator-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.indicator-dots .dot {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  background: transparent;
+}
+
+.indicator-dots .dot.active {
+  background: var(--accent-secondary);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+  transform: scale(1.25);
+  border-color: #ffffff;
+}
+
+.indicator-dots .dot:hover {
+  border-color: var(--text-primary);
+}
+
+/* Footer Section Bar */
+.hud-footer-bar {
+  position: absolute;
+  bottom: 20px;
+  left: 28px;
+  right: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  color: var(--text-secondary);
+  z-index: 5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hud-footer-bar .active-title {
+  color: #fff;
+  font-weight: bold;
+}
+
+.hud-footer-bar .active-tech {
+  color: var(--accent-secondary);
+  font-weight: 600;
+}
+
+
+/* ==========================================================================
+   2D GRID FALLBACK STYLES
+   ========================================================================== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.project-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168, 85, 247, 0.25);
+  box-shadow: 0 12px 30px rgba(168, 85, 247, 0.1);
+}
+
+.project-image {
+  height: 220px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.placeholder-project1 { background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(3, 7, 18, 0.6) 80%); }
+.placeholder-project2 { background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(3, 7, 18, 0.6) 80%); }
+.placeholder-project3 { background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(3, 7, 18, 0.6) 80%); }
+
+/* De-register scanline tracking animations */
+.scanline {
+  display: none !important;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 18, 30, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.project-link {
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--bg-primary);
+  transition: var(--transition-smooth);
+}
+
+.project-link:hover {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+  transform: scale(1.08);
+}
+
+.project-info {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-info h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.project-info h3::before {
+  display: none !important;
+}
+
+.project-info p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tech-tag {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+  background: rgba(168, 85, 247, 0.05);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 99px;
+  padding: 4px 12px;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN OVERRIDES
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .projects-3d-wrapper {
+    height: 520px;
+    margin: 0 12px;
+  }
+
+  .projects-canvas-container {
+    height: 430px;
+  }
+
+  .hud-header-bar {
+    left: 20px;
+    font-size: 0.72rem;
+  }
+
+  .hud-navigation-controls {
+    bottom: 50px;
+    gap: 1rem;
+    width: 90%;
+    justify-content: space-between;
+  }
+
+  .hud-btn {
+    padding: 8px 16px;
+    font-size: 0.78rem;
+  }
+
+  .hud-btn .btn-label {
+    display: none;
+  }
+
+  .hud-indicators {
+    min-width: 80px;
+  }
+
+  .index-counter {
+    font-size: 1rem;
+  }
+
+  .hud-footer-bar {
+    left: 20px;
+    right: 20px;
+    font-size: 0.75rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+}

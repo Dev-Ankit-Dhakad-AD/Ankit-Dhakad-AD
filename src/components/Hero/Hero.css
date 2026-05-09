@@ -1,0 +1,351 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 100px;
+}
+
+/* De-register rigid grids and crosshairs */
+.grid-overlay, .crosshair, .hud-corner, .hud-ring {
+  display: none !important;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.system-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-secondary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 99px;
+  padding: 6px 16px;
+  background: rgba(168, 85, 247, 0.06);
+  animation: slideDownIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.greeting {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.15s;
+  will-change: transform, opacity;
+}
+
+.name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 5.2rem;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  letter-spacing: -2.5px;
+  animation: scaleUpIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.3s;
+  will-change: transform, opacity;
+}
+
+/* De-activate glitch overlays */
+.glitch::before, .glitch::after {
+  display: none !important;
+}
+
+.role {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.7rem;
+  color: var(--text-primary);
+  margin-bottom: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  animation: trackingExpand 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.45s;
+  will-change: opacity, letter-spacing;
+}
+
+.bio-container {
+  background: transparent;
+  border-left: none;
+  padding: 0;
+  margin-bottom: 2.5rem;
+}
+
+.bio {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  line-height: 1.65;
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.6s;
+  will-change: transform, opacity;
+}
+
+/* Buttons container */
+.hero-cta {
+  display: flex;
+  gap: 1.2rem;
+  animation: scaleUpIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.75s;
+  will-change: transform, opacity;
+}
+
+/* Visual Section */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  width: 360px;
+  height: 360px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border-radius: 50%;
+  animation: scaleUpIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.4s;
+  will-change: transform, opacity;
+}
+
+/* Ambient Backlight Pulsing Orb */
+.avatar-glow-orb {
+  position: absolute;
+  top: -15%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.24) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(22px);
+  pointer-events: none;
+  animation: breatheGlow 5s infinite alternate ease-in-out;
+}
+
+/* Technical Orbit Rings */
+.avatar-orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.avatar-orbit-ring.ring-dashed {
+  width: calc(100% + 24px);
+  height: calc(100% + 24px);
+  border: 1.5px dashed rgba(168, 85, 247, 0.35);
+  animation: spinClockwise 25s linear infinite;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.1);
+}
+
+.avatar-orbit-ring.ring-solid {
+  width: calc(100% + 48px);
+  height: calc(100% + 48px);
+  border: 1px solid rgba(59, 130, 246, 0.08);
+  border-top: 1.5px solid rgba(59, 130, 246, 0.4);
+  border-bottom: 1.5px solid rgba(59, 130, 246, 0.4);
+  animation: spinCounterClockwise 18s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.25));
+}
+
+.avatar-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden; /* Perfect circular mask inside container */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.25), inset 0 0 40px rgba(168, 85, 247, 0.05);
+  z-index: 1; /* Sits above rings and glow */
+}
+
+.hero-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 12%; /* Prevent top clipping of head and hair */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.image-container:hover .hero-avatar {
+  transform: scale(1.08) rotate(1deg); /* Smooth tilt and zoom effect */
+}
+
+/* Orbit keyframes and animation engines */
+@keyframes spinClockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinCounterClockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes breatheGlow {
+  0% { opacity: 0.7; transform: scale(0.96); }
+  100% { opacity: 1.0; transform: scale(1.04); }
+}
+
+/* Floating Badges */
+.floating-badge {
+  position: absolute;
+  padding: 8px 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(13, 18, 30, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--glass-shadow);
+  border-radius: 99px;
+  letter-spacing: -0.1px;
+  z-index: 3; /* Sit completely above the layers */
+}
+
+.badge-1 { 
+  top: 15%; 
+  left: -15%; 
+  border-color: rgba(59, 130, 246, 0.25);
+  animation: floatBadge1 4s infinite alternate ease-in-out; 
+}
+.badge-2 { 
+  bottom: 25%; 
+  right: -15%; 
+  border-color: rgba(168, 85, 247, 0.25);
+  animation: floatBadge2 4s infinite alternate ease-in-out 1s; 
+}
+.badge-3 { 
+  bottom: -5%; 
+  left: 15%; 
+  border-color: rgba(16, 185, 129, 0.25);
+  animation: floatBadge3 4s infinite alternate ease-in-out 0.5s; 
+}
+
+@keyframes floatBadge1 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-12px); }
+}
+
+@keyframes floatBadge2 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+
+@keyframes floatBadge3 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+@media (max-width: 992px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 4rem;
+  }
+  
+  .hero-text { 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  .bio-container { 
+    border-bottom: none; 
+  }
+  .image-container { 
+    width: 300px; 
+    height: 300px; 
+  }
+  .floating-badge { 
+    display: none; 
+  }
+}
+
+@media (max-width: 576px) {
+  .name { font-size: 3.5rem; }
+  .role { font-size: 1.25rem; }
+  .hero-cta { flex-direction: column; width: 100%; gap: 1rem; }
+  .btn { width: 100%; justify-content: center; }
+}
+
+/* --- Entrance Animations for Landing Text --- */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-40px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes trackingExpand {
+  0% {
+    opacity: 0;
+    letter-spacing: -2px;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: -0.4px;
+  }
+}
+
+@keyframes slideDownIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes scaleUpIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translate3d(0, 20px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
