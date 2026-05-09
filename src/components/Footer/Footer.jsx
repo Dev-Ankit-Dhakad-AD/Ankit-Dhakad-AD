@@ -1,4 +1,4 @@
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Heart } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import './Footer.css';
@@ -26,11 +26,14 @@ const Footer = () => {
       </div>
       
       <div className="footer-bottom">
-        <p>
-          &copy; {currentYear} Ankit Dhakad. All rights reserved.
-        </p>
         <p className="made-with">
-          Designed &amp; Crafted with Passion
+          Designed &amp; Built with <Heart size={15} fill="#00e5ff" color="#00e5ff" className="heart-icon" /> by{' '}
+          <a href="https://github.com/Dev-Ankit-Dhakad-AD" target="_blank" rel="noreferrer" className="author-name">
+            Ankit Dhakad (AD)
+          </a>
+        </p>
+        <p className="copyright-text">
+          &copy; {currentYear} All Rights Reserved.
         </p>
       </div>
     </footer>

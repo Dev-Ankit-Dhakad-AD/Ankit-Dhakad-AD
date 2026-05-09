@@ -2,6 +2,21 @@ import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
+  const handleWhatsAppSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+
+    const whatsappMessage = `*New Contact Form Submission*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Subject:* ${subject}%0A*Message:* ${message}`;
+    const whatsappUrl = `https://wa.me/916267319670?text=${whatsappMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+    e.target.reset(); // Clear the form
+  };
+
   return (
     <section id="contact" className="contact section-container">
       <h2 className="section-title">
@@ -48,22 +63,22 @@ const Contact = () => {
           </div>
         </div>
         
-        <form className="contact-form glass tilt-3d" onSubmit={(e) => e.preventDefault()}>
+        <form className="contact-form glass tilt-3d" onSubmit={handleWhatsAppSubmit}>
           <div className="form-group">
             <label>Your Name</label>
-            <input type="text" required placeholder="John Doe" className="form-input" />
+            <input type="text" name="name" required className="form-input" />
           </div>
           <div className="form-group">
             <label>Your Email</label>
-            <input type="email" required placeholder="john@example.com" className="form-input" />
+            <input type="email" name="email" required className="form-input" />
           </div>
           <div className="form-group">
             <label>Subject</label>
-            <input type="text" required placeholder="Project Inquiry / Job Opening" className="form-input" />
+            <input type="text" name="subject" required className="form-input" />
           </div>
           <div className="form-group">
             <label>Message</label>
-            <textarea rows="5" required placeholder="How can I help you?" className="form-input"></textarea>
+            <textarea rows="5" name="message" required className="form-input"></textarea>
           </div>
           
           <button type="submit" className="btn btn-primary submit-btn">

@@ -63,20 +63,55 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 0.6rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  color: var(--text-secondary);
+  color: #a1a1aa;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: -0.1px;
+  font-size: 0.95rem;
 }
 
 .made-with {
-  color: var(--accent-secondary);
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  color: #d4d4d8; /* Light gray text */
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.heart-icon {
+  margin: 0 0.1rem;
+}
+
+.author-name {
+  font-weight: 800;
+  color: #ffffff; /* Bright white name */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.author-name:hover {
+  color: #00e5ff; /* Match heart color on hover */
+}
+
+.copyright-text {
+  color: #71717a; /* Muted gray for copyright */
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.copyright-text a {
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.copyright-text a:hover {
+  color: #a1a1aa;
 }
 
 @media (max-width: 768px) {
