@@ -1,0 +1,129 @@
+.footer {
+  margin-top: 6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 4rem 24px 2rem;
+  background: rgba(3, 7, 18, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.footer-brand .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.terminal-icon {
+  color: var(--accent-secondary);
+}
+
+.footer-brand p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-secondary);
+  transition: var(--transition-smooth);
+}
+
+.footer-social a:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: #a1a1aa;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+}
+
+.made-with {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  color: #d4d4d8; /* Light gray text */
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.heart-icon {
+  margin: 0 0.1rem;
+}
+
+.author-name {
+  font-weight: 800;
+  color: #ffffff; /* Bright white name */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.author-name:hover {
+  color: #00e5ff; /* Match heart color on hover */
+}
+
+.copyright-text {
+  color: #71717a; /* Muted gray for copyright */
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.copyright-text a {
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.copyright-text a:hover {
+  color: #a1a1aa;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
